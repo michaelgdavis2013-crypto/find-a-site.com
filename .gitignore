@@ -1,0 +1,12 @@
+# Node and editor files
+.DS_Store
+Thumbs.db
+.env
+
+# OS files
+desktop.ini
+
+# Logs
+*.log
+
+git/

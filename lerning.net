@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream Job Learning</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f6ff;
+      color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #2a4d8c;
+      margin-bottom: 10px;
+    }
+    label, p {
+      line-height: 1.6;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border: 1px solid #c5cee0;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      background: #3d7ddd;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2b62b2;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    .card {
+      background: #eef3ff;
+      padding: 18px;
+      border-radius: 10px;
+      border: 1px solid #d9e1ff;
+      margin-top: 15px;
+    }
+    .protocols li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Dream Job Learning Hub</h1>
+    <p>Enter your dream job and learn the basics, plus safety protocols to protect your online work and data from hackers.</p>
+    <label for="jobInput">Dream Job</label>
+    <input type="text" id="jobInput" placeholder="e.g. software developer, graphic designer, teacher">
+    <button id="learnButton">Learn About It</button>
+
+    <div class="section">
+      <h2>What you will learn</h2>
+      <div id="jobInfo" class="card">
+        <p>Type your dream job and click the button to get a simple overview and useful tips.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Safety Protocols</h2>
+      <div class="card protocols">
+        <ul>
+          <li>Use strong, unique passwords and change them regularly.</li>
+          <li>Enable two-factor authentication (2FA) on important accounts.</li>
+          <li>Keep your software and devices updated with the latest security patches.</li>
+          <li>Avoid clicking unknown links or downloading files from untrusted sources.</li>
+          <li>Use a secure network and avoid public Wi-Fi for sensitive tasks.</li>
+          <li>Back up your important files regularly.</li>
+          <li>Be careful with personal information and share only what is necessary.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const jobInput = document.getElementById('jobInput');
+    const learnButton = document.getElementById('learnButton');
+    const jobInfo = document.getElementById('jobInfo');
+
+    const careerDetails = {
+      'software developer': {
+        title: 'Software Developer',
+        description: 'Software developers design and build applications, write code, and solve problems using programming languages.',
+        skills: 'Learn programming, testing, debugging, version control, and teamwork.'
+      },
+      'graphic designer': {
+        title: 'Graphic Designer',
+        description: 'Graphic designers create visual content for brands, websites, and print media using design tools and creative thinking.',
+        skills: 'Study color, typography, layout, tools like Photoshop or Illustrator, and presentation.'
+      },
+      'teacher': {
+        title: 'Teacher',
+        description: 'Teachers share knowledge, create lesson plans, and support students to learn in a positive classroom environment.',
+        skills: 'Develop communication, planning, patience, classroom management, and subject knowledge.'
+      },
+      'data analyst': {
+        title: 'Data Analyst',
+        description: 'Data analysts collect, examine, and interpret data to help organizations make better decisions.',
+        skills: 'Learn spreadsheets, data visualization, statistics, and reporting tools.'
+      },
+      'cybersecurity specialist': {
+        title: 'Cybersecurity Specialist',
+        description: 'Cybersecurity specialists protect systems and networks from attacks and help keep sensitive information safe.',
+        skills: 'Study security fundamentals, monitoring, threat detection, and response techniques.'
+      }
+    };
+
+    function displayJobInfo(jobName) {
+      const key = jobName.trim().toLowerCase();
+      const detail = careerDetails[key];
+
+      if (detail) {
+        jobInfo.innerHTML = `
+          <h3>${detail.title}</h3>
+          <p>${detail.description}</p>
+          <p><strong>Key skills:</strong> ${detail.skills}</p>
+        `;
+      } else if (key) {
+        jobInfo.innerHTML = `
+          <h3>${jobName}</h3>
+          <p>This is a great choice. To learn about this career, start with online research, practice the core skills, and try related projects or courses.</p>
+          <p><strong>Tip:</strong> Break the job into smaller skills and build one at a time.</p>
+        `;
+      } else {
+        jobInfo.innerHTML = '<p>Please enter a dream job to learn more.</p>';
+      }
+    }
+
+    learnButton.addEventListener('click', () => {
+      displayJobInfo(jobInput.value);
+    });
+
+    jobInput.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        displayJobInfo(jobInput.value);
+      }
+    });
+  </script>
+</body>
+</html>
