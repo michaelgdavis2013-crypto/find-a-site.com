@@ -65,7 +65,7 @@ Recommended provider:
 1. Sign up or log in at https://www.netlify.com.
 2. Create a new site and connect your Git repository, or drag the project folder into the dashboard.
 3. Set the publish directory to `.` if prompted.
-4. Add a custom domain under Site settings and configure DNS for `www.dreamjob.com`.
+4. Add a custom domain under Site settings and configure DNS for `www.find-a-site.com`.
 
 ### Custom domain for GitHub Pages
 
@@ -73,7 +73,7 @@ Recommended provider:
 2. Add a file named `CNAME` in the repository root with the content:
 
 ```
-www.dreamjob.com
+www.find-a-site.com
 ```
 
 3. Enable GitHub Pages in repository settings and select the `main` branch.
