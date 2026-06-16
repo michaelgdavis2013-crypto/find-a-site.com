@@ -3,103 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RPG-skyrim.com</title>
+  <title>Find A Site - Your Website Directory</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="page-shell">
     <header class="site-header">
       <nav class="site-nav">
-        <span class="brand">RPG-skyrim.com</span>
+        <span class="brand">Find A Site</span>
         <div class="nav-links">
-          <a href="#gamePanel">Play</a>
-          <a href="#features">Features</a>
-          <a href="#lore">Lore</a>
+          <a href="#search">Search</a>
+          <a href="#categories">Categories</a>
+          <a href="#about">About</a>
         </div>
       </nav>
 
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Nordic fantasy RPG</p>
-          <h1>Welcome to Skyrim</h1>
-          <p>Step into the frozen holds, face ancient dragons, and master the Thu'um in a browser-based adventure inspired by Skyrim.</p>
-          <button id="startButton" class="button button-primary">Begin the Quest</button>
-        </div>
-        <div class="hero-visual">
-          <div class="dragon-sigil"></div>
+          <p class="eyebrow">Discover amazing websites</p>
+          <h1>Find A Site</h1>
+          <p>Explore a curated directory of the best websites across various categories. Find exactly what you need, when you need it.</p>
         </div>
       </section>
     </header>
 
     <main>
-      <section class="game-panel" id="gamePanel">
-        <div class="panel-header">
-          <div>
-            <h2>Dragonborn</h2>
-            <p id="statusText">Choose your name, your path, and claim the power of a true hero.</p>
-          </div>
-          <button id="resetButton" class="button button-secondary">Restart</button>
+      <section class="search-section" id="search">
+        <div class="search-container">
+          <input 
+            type="text" 
+            id="searchInput" 
+            class="search-bar" 
+            placeholder="Search websites by name, description, or category..."
+          />
+          <button id="searchButton" class="button button-primary">Search</button>
         </div>
+        <div id="searchResults" class="search-results"></div>
+      </section>
 
-        <div class="character-card">
-          <div class="character-meta">
-            <label for="nameInput">Dragonborn name</label>
-            <input id="nameInput" type="text" value="Dovahkiin" maxlength="16" />
-            <label for="classSelect">Path</label>
-            <select id="classSelect">
-              <option value="Dragonborn">Dragonborn</option>
-              <option value="Warrior">Warrior</option>
-              <option value="Mage">Mage</option>
-              <option value="Thief">Thief</option>
-            </select>
-          </div>
-          <div class="stats-grid">
-            <div class="stat-card">
-              <span class="stat-label">Health</span>
-              <strong id="healthValue">120</strong>
-            </div>
-            <div class="stat-card">
-              <span class="stat-label">Magicka</span>
-              <strong id="magickaValue">70</strong>
-            </div>
-            <div class="stat-card">
-              <span class="stat-label">Dragon Soul</span>
-              <strong id="dragonSoulValue">12</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="story-card">
-          <p class="story-text" id="storyText">Your first choice will echo across the holds. Will you harness the Thu'um or walk the quiet path of shadows?</p>
-          <div class="choice-grid" id="choiceGrid"></div>
+      <section class="categories-section" id="categories">
+        <h2>Browse by Category</h2>
+        <div class="category-grid" id="categoryGrid">
+          <!-- Categories will be populated by JavaScript -->
         </div>
       </section>
 
-      <section class="features" id="features">
-        <article>
-          <h3>Dragonborn journey</h3>
-          <p>Play through a branching story with Skyrim-inspired choices, twists, and a dramatic final test.</p>
-        </article>
-        <article>
-          <h3>Legendary builds</h3>
-          <p>Choose a path, equip your inventory, and level your stats across a short but replayable quest.</p>
-        </article>
-        <article>
-          <h3>Skyrim feel</h3>
-          <p>Experience Nordic art direction, lore-driven text, and immersive world-building in a browser game.</p>
-        </article>
+      <section class="featured-section">
+        <h2>Featured Websites</h2>
+        <div class="featured-grid" id="featuredGrid">
+          <!-- Featured sites will be populated by JavaScript -->
+        </div>
       </section>
 
-      <section class="lore" id="lore">
-        <div class="lore-panel">
-          <h2>Hold of the Dragonborn</h2>
-          <p>From the frozen peaks of the Throat of the World to the shadowed corridors of Bleak Falls Barrow, your fate is written in the bones of dragons. Seek out the Voice, honor the old ways, and choose whether to defend Skyrim or pursue your own destiny.</p>
+      <section class="about" id="about">
+        <div class="about-content">
+          <h2>About Find A Site</h2>
+          <p>Find A Site is your go-to directory for discovering useful, interesting, and amazing websites. Whether you're looking for productivity tools, entertainment, learning resources, or anything in between, we've got you covered with a carefully curated collection.</p>
+          <p>Our mission is to help you discover the best of the web in one convenient place.</p>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>© 2026 RPG-skyrim.com. Inspired by Skyrim, built for your browser.</p>
+      <p>© 2026 Find A Site. Your gateway to amazing websites.</p>
     </footer>
   </div>
 

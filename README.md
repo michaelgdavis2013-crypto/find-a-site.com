@@ -1,80 +1,117 @@
-# RPG-skyrim.com
+# Find A Site - Website Directory
 
-A Skyrim-inspired browser RPG landing page and playable story built with HTML, CSS, and JavaScript.
+A simple, fast, and beautiful directory to discover websites across various categories. Built with HTML, CSS, and JavaScript.
 
-## Open locally
+## Features
 
-1. Open `C:\Users\micha\RoleplayGameWebsite\index.html` in your browser.
-2. Alternatively, run a local server from that folder:
+- **Search functionality** - Find websites by name, description, or category
+- **Browse by category** - Filter websites by topic (Development, Learning, Entertainment, etc.)
+- **Featured websites** - Discover popular sites on the homepage
+- **Responsive design** - Works perfectly on desktop, tablet, and mobile
+- **Fast and lightweight** - Pure static site with no dependencies
 
-```powershell
-cd C:\Users\micha\RoleplayGameWebsite
+## Getting Started
+
+### Run locally
+
+1. Clone the repository:
+```bash
+git clone https://github.com/michaelgdavis2013-crypto/find-a-site.com.git
+cd find-a-site.com
+```
+
+2. Open `index.html` in your browser, or run a local server:
+
+**Python 3:**
+```bash
 python -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
-
-## What it includes
-
-- interactive adventure with branching choices
-- hero customization and stats
-- polished dark fantasy website layout
-- navigation, lore section, and footer
-
-## Deploy to GitHub
-
-1. Install Git from https://git-scm.com/downloads.
-2. Open PowerShell and run:
-
-```powershell
-cd C:\Users\micha\RoleplayGameWebsite
-.\deploy-to-github.ps1 -RepoName "KnightsQuest" -RemoteUrl "https://github.com/<your-username>/KnightsQuest.git"
+**Python 2:**
+```bash
+python -m SimpleHTTPServer 8000
 ```
 
-3. If you want GitHub Pages, enable it in the repository settings and use the `main` branch as the source.
-
-## Deploy as a public website without GitHub
-
-### Netlify
-1. Sign up at https://www.netlify.com.
-2. Connect your site folder or drag the project into the Netlify dashboard.
-3. Use `.` as the publish directory.
-
-Netlify will serve the site publicly on a `*.netlify.app` address.
-
-### Vercel
-1. Sign up at https://vercel.com.
-2. Create a new project and import the folder.
-3. Vercel will detect the static site and publish it automatically.
-
-### Cloudflare Pages
-1. Sign up at https://pages.cloudflare.com.
-2. Create a new Pages project and upload the folder.
-3. Use `.` as the build output folder.
-
-### Hosting provider
-This site is ready to be hosted on a static hosting provider.
-
-Recommended provider:
-
-- Netlify: `netlify.toml` is included so you can deploy from the project root with `.` as the publish directory.
-- Vercel: `vercel.json` is included for static deployment.
-
-## Netlify deployment
-
-1. Sign up or log in at https://www.netlify.com.
-2. Create a new site and connect your Git repository, or drag the project folder into the dashboard.
-3. Set the publish directory to `.` if prompted.
-4. Add a custom domain under Site settings and configure DNS for `www.find-a-site.com`.
-
-### Custom domain for GitHub Pages
-
-1. Create a GitHub repository and push this project.
-2. Add a file named `CNAME` in the repository root with the content:
-
-```
-www.find-a-site.com
+**Node.js (http-server):**
+```bash
+npx http-server
 ```
 
-3. Enable GitHub Pages in repository settings and select the `main` branch.
-4. Point your domain DNS to GitHub Pages as described by GitHub.
+Then visit `http://localhost:8000` in your browser.
+
+## Deploying to GitHub Pages
+
+1. Push your repository to GitHub
+2. Go to repository settings
+3. Scroll to "GitHub Pages"
+4. Select "Deploy from a branch"
+5. Choose `main` branch
+6. Save
+
+Your site will be live at `https://yourusername.github.io/find-a-site.com`
+
+To use a custom domain (like `www.find-a-site.com`):
+1. Update your domain DNS settings to point to GitHub Pages
+2. In GitHub repository settings, set the custom domain in the "GitHub Pages" section
+3. The `CNAME` file is already configured
+
+## Deploying to Netlify
+
+1. Sign up at https://www.netlify.com
+2. Click "New site from Git"
+3. Connect your GitHub repository
+4. Set publish directory to `.`
+5. Deploy
+
+The site will be live on a `*.netlify.app` domain, or you can configure a custom domain.
+
+## Deploying to Vercel
+
+1. Sign up at https://vercel.com
+2. Click "New Project"
+3. Import your GitHub repository
+4. Vercel will auto-detect it as a static site
+5. Deploy
+
+Your site will be live with a vercel domain or custom domain.
+
+## File Structure
+
+```
+find-a-site.com/
+├── index.html      # Main HTML file
+├── styles.css      # Styling
+├── script.js       # JavaScript functionality
+├── CNAME           # Custom domain file for GitHub Pages
+├── netlify.toml    # Netlify deployment config
+├── vercel.json     # Vercel deployment config
+└── README.md       # This file
+```
+
+## Adding More Websites
+
+Edit `script.js` and add to the `websites` array:
+
+```javascript
+{
+  name: 'Your Site',
+  url: 'https://yoursite.com',
+  category: 'Your Category',
+  description: 'Site description here'
+}
+```
+
+## Browser Support
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## License
+
+This project is open source and available for personal and commercial use.
+
+## Support
+
+For issues or questions, please create an issue on GitHub.

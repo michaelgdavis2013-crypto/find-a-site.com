@@ -1,199 +1,199 @@
-const startButton = document.getElementById('startButton');
-const resetButton = document.getElementById('resetButton');
-const storyText = document.getElementById('storyText');
-const choiceGrid = document.getElementById('choiceGrid');
-const statusText = document.getElementById('statusText');
-const nameInput = document.getElementById('nameInput');
-const classSelect = document.getElementById('classSelect');
-const healthValue = document.getElementById('healthValue');
-const magickaValue = document.getElementById('magickaValue');
-const dragonSoulValue = document.getElementById('dragonSoulValue');
-
-const scenes = {
-  start: {
-    text: "You arrive at the gates of Whiterun as dragons stir above the Greybeards' mountain. The old prophecies whisper of a Dragonborn's first trial.",
-    choices: [
-      { label: 'Seek counsel at Jorrvaskr', next: 'jorrvaskr' },
-      { label: 'Climb toward High Hrothgar', next: 'hrothgar' }
-    ]
+// Website directory data
+const websites = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com',
+    category: 'Development',
+    description: 'The world\'s leading software development platform'
   },
-  jorrvaskr: {
-    text: "A Nord warrior greets you. He speaks of a stormcloak raid and a dragon seen near Bleak Falls Barrow.",
-    choices: [
-      { label: 'Join the hunting party', next: 'hunter' },
-      { label: 'Explore the barrow alone', next: 'barrow' }
-    ]
+  {
+    name: 'Stack Overflow',
+    url: 'https://stackoverflow.com',
+    category: 'Development',
+    description: 'Q&A community for programmers'
   },
-  hrothgar: {
-    text: "The wind cuts deep as you climb. The Greybeards sense your voice and say the Dragonborn must prove their Thu'um.",
-    choices: [
-      { label: 'Shout with all your power', next: 'shout' },
-      { label: 'Train in shadow and patience', next: 'stealth' }
-    ]
+  {
+    name: 'MDN Web Docs',
+    url: 'https://developer.mozilla.org',
+    category: 'Learning',
+    description: 'Comprehensive web development documentation'
   },
-  hunter: {
-    text: "The hunting party finds a dragon's remains. Your blade proves true, and you recover a dragonbone dagger.",
-    effect: (state) => {
-      state.inventory.push('Dragonbone Dagger');
-      state.health += 10;
-      state.dragonSoul += 2;
-    },
-    next: 'barrow'
+  {
+    name: 'YouTube',
+    url: 'https://youtube.com',
+    category: 'Entertainment',
+    description: 'Video sharing and streaming platform'
   },
-  barrow: {
-    text: "Inside Bleak Falls Barrow you find a glowing Word Wall and an echoed whisper of power.",
-    choices: [
-      { label: 'Learn the shout from the wall', next: 'wordWall' },
-      { label: 'Claim the hidden ring', next: 'ring' }
-    ]
+  {
+    name: 'Netflix',
+    url: 'https://netflix.com',
+    category: 'Entertainment',
+    description: 'Streaming entertainment service'
   },
-  shout: {
-    text: "Your voice shakes the mountain. The Greybeards nod in approval, and the Thu'um flows through you.",
-    effect: (state) => {
-      state.magicka += 15;
-      state.dragonSoul += 3;
-    },
-    next: 'rival'
+  {
+    name: 'Coursera',
+    url: 'https://coursera.org',
+    category: 'Learning',
+    description: 'Online learning and professional courses'
   },
-  stealth: {
-    text: "You move like a shadow. Your senses sharpen and the climb becomes a quiet test of patience.",
-    effect: (state) => {
-      state.dragonSoul += 1;
-    },
-    next: 'rival'
+  {
+    name: 'Udemy',
+    url: 'https://udemy.com',
+    category: 'Learning',
+    description: 'Affordable online courses and training'
   },
-  wordWall: {
-    text: "You study the ancient word. It grants you a new shout and a surge of arcane energy.",
-    effect: (state) => {
-      state.magicka += 20;
-      state.dragonSoul += 2;
-      state.inventory.push('Unrelenting Force');
-    },
-    next: 'rival'
+  {
+    name: 'Twitter',
+    url: 'https://twitter.com',
+    category: 'Social Media',
+    description: 'Social networking and news platform'
   },
-  ring: {
-    text: "The ring pulses with hidden magic. You slip it on and feel luck walk beside you.",
-    effect: (state) => {
-      state.health += 8;
-      state.magicka += 5;
-      state.inventory.push('Ring of the Gray Fox');
-    },
-    next: 'rival'
+  {
+    name: 'LinkedIn',
+    url: 'https://linkedin.com',
+    category: 'Social Media',
+    description: 'Professional networking platform'
   },
-  rival: {
-    text: "A rival Dragonborn steps forward in the cold ruins. Their eyes burn with draconic power.",
-    choices: [
-      { label: 'Shout them down', next: 'dragonborn' },
-      { label: 'Strike from the shadows', next: 'shadow' },
-      { label: 'Offer peace and knowledge', next: 'peace' }
-    ]
+  {
+    name: 'Spotify',
+    url: 'https://spotify.com',
+    category: 'Entertainment',
+    description: 'Music streaming service'
   },
-  dragonborn: {
-    text: "You unleash the Thu'um. The rival yields, and the voice of the dragons acknowledges your destiny.",
-    effect: (state) => {
-      state.magicka -= 15;
-      state.dragonSoul += 4;
-      state.inventory.push('Dragon Shout');
-    },
-    end: true
+  {
+    name: 'Notion',
+    url: 'https://notion.so',
+    category: 'Productivity',
+    description: 'All-in-one workspace for notes and projects'
   },
-  shadow: {
-    text: "You strike from the darkness with deadly precision. The rival falls, but the victory leaves a cold weight behind.",
-    effect: (state) => {
-      state.health -= 12;
-      state.dragonSoul += 2;
-      state.inventory.push('Nightingale Gear');
-    },
-    end: true
+  {
+    name: 'Figma',
+    url: 'https://figma.com',
+    category: 'Design',
+    description: 'Collaborative design and prototyping tool'
   },
-  peace: {
-    text: "Your calm words win trust. The rival shares a secret map to a lost dragon altar.",
-    effect: (state) => {
-      state.magicka += 10;
-      state.dragonSoul += 1;
-      state.inventory.push('Secret Map');
-    },
-    end: true
+  {
+    name: 'Canva',
+    url: 'https://canva.com',
+    category: 'Design',
+    description: 'Easy-to-use graphic design platform'
+  },
+  {
+    name: 'Amazon',
+    url: 'https://amazon.com',
+    category: 'Shopping',
+    description: 'Online retail and marketplace'
+  },
+  {
+    name: 'Wikipedia',
+    url: 'https://wikipedia.org',
+    category: 'Reference',
+    description: 'Free online encyclopedia'
   }
-};
+];
 
-const defaultState = () => ({
-  name: 'Dovahkiin',
-  class: 'Dragonborn',
-  health: 120,
-  magicka: 70,
-  dragonSoul: 14,
-  inventory: [],
-  currentScene: 'start'
-});
+// Extract unique categories
+const categories = [...new Set(websites.map(site => site.category))].sort();
 
-let state = defaultState();
+// DOM elements
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const searchResults = document.getElementById('searchResults');
+const categoryGrid = document.getElementById('categoryGrid');
+const featuredGrid = document.getElementById('featuredGrid');
 
-function updateDisplay() {
-  nameInput.value = state.name;
-  classSelect.value = state.class;
-  healthValue.textContent = state.health;
-  magickaValue.textContent = state.magicka;
-  dragonSoulValue.textContent = state.dragonSoul;
-  statusText.textContent = `${state.name} the ${state.class} prepares to claim Skyrim.`;
+// Initialize page
+function init() {
+  renderCategories();
+  renderFeaturedSites();
+}
 
-  const scene = scenes[state.currentScene];
-  storyText.textContent = scene.text;
-  choiceGrid.innerHTML = '';
+// Render category buttons
+function renderCategories() {
+  categoryGrid.innerHTML = '';
+  categories.forEach(category => {
+    const button = document.createElement('button');
+    button.className = 'category-button';
+    button.textContent = category;
+    button.addEventListener('click', () => filterByCategory(category));
+    categoryGrid.appendChild(button);
+  });
+}
 
-  if (scene.effect && !scene.choices) {
-    scene.effect(state);
-    if (scene.next) {
-      state.currentScene = scene.next;
-      return updateDisplay();
-    }
+// Filter sites by category
+function filterByCategory(category) {
+  const filtered = websites.filter(site => site.category === category);
+  displayResults(filtered, `Category: ${category}`);
+}
+
+// Render featured sites (random selection)
+function renderFeaturedSites() {
+  const featured = websites.sort(() => Math.random() - 0.5).slice(0, 6);
+  featuredGrid.innerHTML = '';
+  featured.forEach(site => {
+    const card = createSiteCard(site);
+    featuredGrid.appendChild(card);
+  });
+}
+
+// Create site card
+function createSiteCard(site) {
+  const card = document.createElement('div');
+  card.className = 'site-card';
+  card.innerHTML = `
+    <div class="site-card-header">
+      <h3>${site.name}</h3>
+      <span class="category-badge">${site.category}</span>
+    </div>
+    <p class="site-description">${site.description}</p>
+    <a href="${site.url}" target="_blank" class="button button-secondary">Visit Site</a>
+  `;
+  return card;
+}
+
+// Search functionality
+function performSearch() {
+  const query = searchInput.value.toLowerCase().trim();
+  
+  if (!query) {
+    searchResults.innerHTML = '<p class="no-results">Enter a search term to begin.</p>';
+    return;
   }
-
-  if (scene.choices) {
-    scene.choices.forEach((choice) => {
-      const button = document.createElement('button');
-      button.className = 'choice-button';
-      button.textContent = choice.label;
-      button.addEventListener('click', () => {
-        state.currentScene = choice.next;
-        updateDisplay();
-      });
-      choiceGrid.appendChild(button);
-    });
-  } else if (scene.end) {
-    const result = document.createElement('p');
-    result.textContent = `Final result: Health ${state.health}, Magicka ${state.magicka}, Dragon Soul ${state.dragonSoul}. Inventory: ${state.inventory.join(', ') || 'none'}.`;
-    result.style.marginTop = '14px';
-    result.style.color = 'var(--success)';
-    choiceGrid.appendChild(result);
+  
+  const results = websites.filter(site => 
+    site.name.toLowerCase().includes(query) ||
+    site.description.toLowerCase().includes(query) ||
+    site.category.toLowerCase().includes(query)
+  );
+  
+  if (results.length === 0) {
+    searchResults.innerHTML = '<p class="no-results">No websites found matching your search.</p>';
+  } else {
+    displayResults(results, `Search results for "${query}"`);
   }
 }
 
-function startAdventure() {
-  state.name = nameInput.value.trim() || 'Dovahkiin';
-  state.class = classSelect.value;
-  state.currentScene = 'start';
-  state.health = 120;
-  state.magicka = classSelect.value === 'Mage' ? 90 : classSelect.value === 'Dragonborn' ? 70 : classSelect.value === 'Thief' ? 60 : 80;
-  state.dragonSoul = classSelect.value === 'Dragonborn' ? 14 : classSelect.value === 'Warrior' ? 10 : classSelect.value === 'Mage' ? 12 : 11;
-  state.inventory = [];
-  updateDisplay();
+// Display search results
+function displayResults(results, title) {
+  searchResults.innerHTML = `<h3>${title}</h3>`;
+  
+  const resultsList = document.createElement('div');
+  resultsList.className = 'results-list';
+  
+  results.forEach(site => {
+    const card = createSiteCard(site);
+    resultsList.appendChild(card);
+  });
+  
+  searchResults.appendChild(resultsList);
+  searchResults.scrollIntoView({ behavior: 'smooth' });
 }
 
-function resetAdventure() {
-  state = defaultState();
-  updateDisplay();
-}
-
-startButton.addEventListener('click', startAdventure);
-resetButton.addEventListener('click', resetAdventure);
-nameInput.addEventListener('input', () => {
-  state.name = nameInput.value.trim() || 'Dovahkiin';
-  updateDisplay();
-});
-classSelect.addEventListener('change', () => {
-  state.class = classSelect.value;
-  updateDisplay();
+// Event listeners
+searchButton.addEventListener('click', performSearch);
+searchInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') performSearch();
 });
 
-updateDisplay();
+// Initialize on page load
+init();
