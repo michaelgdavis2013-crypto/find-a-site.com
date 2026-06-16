@@ -19,6 +19,18 @@ const websites = [
     description: 'Comprehensive web development documentation'
   },
   {
+    name: 'CSS-Tricks',
+    url: 'https://css-tricks.com',
+    category: 'Development',
+    description: 'Daily articles about CSS, HTML, JavaScript and web design'
+  },
+  {
+    name: 'Dev.to',
+    url: 'https://dev.to',
+    category: 'Development',
+    description: 'Community of software developers sharing ideas and helping each other'
+  },
+  {
     name: 'YouTube',
     url: 'https://youtube.com',
     category: 'Entertainment',
@@ -43,6 +55,18 @@ const websites = [
     description: 'Affordable online courses and training'
   },
   {
+    name: 'Codecademy',
+    url: 'https://codecademy.com',
+    category: 'Learning',
+    description: 'Interactive coding lessons for all skill levels'
+  },
+  {
+    name: 'FreeCodeCamp',
+    url: 'https://freecodecamp.org',
+    category: 'Learning',
+    description: 'Free coding education and certifications'
+  },
+  {
     name: 'Twitter',
     url: 'https://twitter.com',
     category: 'Social Media',
@@ -53,6 +77,18 @@ const websites = [
     url: 'https://linkedin.com',
     category: 'Social Media',
     description: 'Professional networking platform'
+  },
+  {
+    name: 'Reddit',
+    url: 'https://reddit.com',
+    category: 'Social Media',
+    description: 'Community discussion forum for diverse topics'
+  },
+  {
+    name: 'Discord',
+    url: 'https://discord.com',
+    category: 'Social Media',
+    description: 'Voice, video, and text communication platform'
   },
   {
     name: 'Spotify',
@@ -67,6 +103,24 @@ const websites = [
     description: 'All-in-one workspace for notes and projects'
   },
   {
+    name: 'Trello',
+    url: 'https://trello.com',
+    category: 'Productivity',
+    description: 'Visual project and task management tool'
+  },
+  {
+    name: 'Asana',
+    url: 'https://asana.com',
+    category: 'Productivity',
+    description: 'Team project and task management platform'
+  },
+  {
+    name: 'Slack',
+    url: 'https://slack.com',
+    category: 'Productivity',
+    description: 'Team communication and collaboration platform'
+  },
+  {
     name: 'Figma',
     url: 'https://figma.com',
     category: 'Design',
@@ -79,16 +133,94 @@ const websites = [
     description: 'Easy-to-use graphic design platform'
   },
   {
+    name: 'Adobe Creative Cloud',
+    url: 'https://adobe.com/products/creative.html',
+    category: 'Design',
+    description: 'Professional design and creative tools'
+  },
+  {
+    name: 'Dribbble',
+    url: 'https://dribbble.com',
+    category: 'Design',
+    description: 'Community platform for designers to showcase work'
+  },
+  {
     name: 'Amazon',
     url: 'https://amazon.com',
     category: 'Shopping',
     description: 'Online retail and marketplace'
   },
   {
+    name: 'eBay',
+    url: 'https://ebay.com',
+    category: 'Shopping',
+    description: 'Online auction and marketplace platform'
+  },
+  {
+    name: 'Etsy',
+    url: 'https://etsy.com',
+    category: 'Shopping',
+    description: 'Marketplace for handmade and vintage items'
+  },
+  {
     name: 'Wikipedia',
     url: 'https://wikipedia.org',
     category: 'Reference',
     description: 'Free online encyclopedia'
+  },
+  {
+    name: 'Dictionary.com',
+    url: 'https://dictionary.com',
+    category: 'Reference',
+    description: 'Online dictionary and thesaurus'
+  },
+  {
+    name: 'Google',
+    url: 'https://google.com',
+    category: 'Utilities',
+    description: 'Search engine and productivity tools'
+  },
+  {
+    name: 'Gmail',
+    url: 'https://gmail.com',
+    category: 'Utilities',
+    description: 'Free email service'
+  },
+  {
+    name: 'Google Drive',
+    url: 'https://drive.google.com',
+    category: 'Utilities',
+    description: 'Cloud storage and document collaboration'
+  },
+  {
+    name: 'Dropbox',
+    url: 'https://dropbox.com',
+    category: 'Utilities',
+    description: 'Cloud storage and file syncing service'
+  },
+  {
+    name: 'ChatGPT',
+    url: 'https://chatgpt.com',
+    category: 'Utilities',
+    description: 'AI-powered conversational assistant'
+  },
+  {
+    name: 'Medium',
+    url: 'https://medium.com',
+    category: 'Content',
+    description: 'Platform for writers and thought leaders'
+  },
+  {
+    name: 'Substack',
+    url: 'https://substack.com',
+    category: 'Content',
+    description: 'Newsletter writing and publishing platform'
+  },
+  {
+    name: 'Hashnode',
+    url: 'https://hashnode.com',
+    category: 'Development',
+    description: 'Blogging platform for developers'
   }
 ];
 
